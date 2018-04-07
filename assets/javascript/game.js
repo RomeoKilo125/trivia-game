@@ -1,8 +1,2 @@
-question1 = {
-  question: "Some camels have one hump, some camels have two humps, but all camels have how many toes?",
-  answer1: "1",
-  answer2: "2",
-  answer3: "3",
-  answer4: "4",
-  correctAnswer: answer2
-}
+let qArray = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14];
+let minScore = 0;
