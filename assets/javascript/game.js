@@ -24,8 +24,7 @@ game = function() {
     usedDouble = false;
     $('#questionBox').html('<h1>Start</h1>');
     $('#questionBox').addClass("starting");
-    $('.answerBox').removeClass("correct right chosen");
-
+    $('.answerBox').removeClass("correct right chosen active");
     $('.answerBox').text("");
     $('#scoreBox').text("$0");
     $('#timeBox').text(timer);
@@ -36,10 +35,15 @@ game = function() {
   }
 
   startTime = function() {
+    objTimer = setInterval(countTime, 1000);
+  }
+
+  countTime = function() {
     timer--;
     $('#timeBox').text(timer);
     timer === 0 ? loseGame() : '';
   }
+
   stopTime = function() {
     clearInterval(objTimer);
   }
@@ -48,7 +52,9 @@ game = function() {
     !gameRunning ? gameRunning = true : '';
     stopTime();
     $('#questionBox').off("click");
+    $('.answerBox').off("click");
     $('#questionBox').removeClass("starting");
+    $('.lifeline').addClass("paused");
     $('#scoreBox').text("$" + score);
     $('.answerBox').text("");
     timer = 30;
@@ -57,21 +63,32 @@ game = function() {
     console.log(q.correctAnswer());
     $('#questionBox').text(q.question);
     setTimeout(function() {
-      $('#answerABox').text(q.answer1)
+      $('#answerABox').text(q.answer1);
+      $('#answerABox').addClass("active");
     }, 1000);
     setTimeout(function() {
-      $('#answerBBox').text(q.answer2)
+      $('#answerBBox').text(q.answer2);
+      $('#answerBBox').addClass("active");
     }, 2000);
     setTimeout(function() {
-      $('#answerCBox').text(q.answer3)
+      $('#answerCBox').text(q.answer3);
+      $('#answerCBox').addClass("active");
     }, 3000);
     setTimeout(function() {
-      $('#answerDBox').text(q.answer4)
+      $('#answerDBox').text(q.answer4);
+      $('#answerDBox').addClass("active");
     }, 4000);
     setTimeout(function() {
-      objTimer = setInterval(startTime, 1000)
+      startTime()
     }, 4000);
-
+    setTimeout(function() {$('.lifeline').removeClass("paused");}, 4000)
+    $('.answerBox').on("click", function() {
+      $(this).addClass("chosen");
+      let response = $(this).text();
+      setTimeout(function() {
+        evaluateAnswer(response);
+      }, 1000)
+    });
   }
 
   showCorrect = function() {
@@ -93,7 +110,7 @@ game = function() {
       $(arr[i]).text("");
     }
     setTimeout(function() {
-      $('.answerBox').removeClass("correct right chosen");
+      $('.answerBox').removeClass("correct right chosen active");
     }, 2000);
   }
 
@@ -132,7 +149,7 @@ game = function() {
     } else {
       if (x2) {
         x2 = false;
-        setInterval(startTime, 1000)
+        startTime()
         return;
       }
       loseGame();
@@ -144,7 +161,7 @@ game = function() {
   }
 
   doubleDip = function() {
-    if (usedDouble || !gameRunning) {
+    if (usedDouble || !gameRunning || $('#doubleBox').hasClass("paused")) {
       return;
     }
     $('#doubleBox').addClass("used");
@@ -188,17 +205,11 @@ game = function() {
 
   setupGame();
 
-  $('.answerBox').on("click", function() {
-    $(this).addClass("chosen");
-    let response = $(this).text();
-    setTimeout(function() {
-      evaluateAnswer(response);
-    }, 1000)
-  });
-
   $('#5050Box').on("click", fiftyFifty);
   $('#jumpBox').on("click", jump);
   $('#doubleBox').on("click", doubleDip);
+
+
 }
 
 game()

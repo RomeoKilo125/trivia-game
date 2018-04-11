@@ -65,6 +65,9 @@ h1 {
 .answerBox {
   padding: 25px;
   height: 85px;
+}
+
+.active {
   border-radius: 50px;
   border: solid 5px white;
 }
