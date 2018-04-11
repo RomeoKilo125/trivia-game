@@ -9,10 +9,12 @@ game = function() {
   let usedJump = false;
   let usedDouble = false;
   let x2 = false;
-  let objTimer
+  let objTimer;
+  let gameRunning = false;
 
   setupGame = function() {
     objTimer ? clearInterval(objTimer) : '';
+    gameRunning = false;
     qArray = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14];
     score = 0;
     minScore = 0;
@@ -20,15 +22,17 @@ game = function() {
     used5050 = false;
     usedJump = false;
     usedDouble = false;
-    $('#questionBox').html('<img id="startButton" src="assets/images/startButton.png" />');
+    $('#questionBox').html('<h1>Start</h1>');
+    $('#questionBox').addClass("starting");
     $('.answerBox').removeClass("correct right chosen");
+
     $('.answerBox').text("");
     $('#scoreBox').text("$0");
     $('#timeBox').text(timer);
-    // $('#5050Box').html('<img src="assets/images/unused5050.png" />')
-    // $('#jumpBox').html('<img src="assets/images/unusedjump.png" />')
-    // $('#doubleBox').html('<img src="assets/images/unusedDouble.png" />')
-    $('#startButton').on("click", displayNextQuestion);
+    $('#5050Box').removeClass("used");
+    $('#jumpBox').removeClass("used");
+    $('#doubleBox').removeClass("used");
+    $('#questionBox').on("click", displayNextQuestion);
   }
 
   countTime = function() {
@@ -38,18 +42,21 @@ game = function() {
   }
 
   displayNextQuestion = function() {
+    !gameRunning ? gameRunning = true : '';
     objTimer ? clearInterval(objTimer) : '';
+    $('#questionBox').off("click");
+    $('#questionBox').removeClass("starting");
     $('#scoreBox').text("$" + score);
     timer = 30;
     $('#timeBox').text(timer);
     q = qArray.shift();
     console.log(q.correctAnswer());
     $('#questionBox').text(q.question);
-    $('#answerABox').text(q.answer1);
-    $('#answerBBox').text(q.answer2);
-    $('#answerCBox').text(q.answer3);
-    $('#answerDBox').text(q.answer4);
-    objTimer = setInterval(countTime, 1000)
+    setTimeout(function() {$('#answerABox').text(q.answer1)}, 1000);
+    setTimeout(function() {$('#answerBBox').text(q.answer2)}, 2000);
+    setTimeout(function() {$('#answerCBox').text(q.answer3)}, 3000);
+    setTimeout(function() {$('#answerDBox').text(q.answer4)}, 4000);
+    objTimer = setTimeout(function() {setInterval(countTime, 1000)}, 4000);
 
   }
 
@@ -120,20 +127,20 @@ game = function() {
   }
 
   doubleDip = function() {
-    if (usedDouble) {
+    if (usedDouble || !gameRunning) {
       return;
     }
-    // $('#doubleBox').html('<img src="assets/images/usedDouble.png" />')
+    $('#doubleBox').addClass("used");
     console.log("doubleDip");
     usedDouble = true;
     x2 = true;
   }
 
   fiftyFifty = function() {
-    if (used5050) {
+    if (used5050 || !gameRunning) {
       return;
     }
-    // $('#5050Box').html('<img src="assets/images/used5050.png" />')
+    $('#5050Box').addClass("used");
     console.log("5050");
     used5050 = true;
     let arr = ['#answerABox', '#answerBBox', '#answerCBox', '#answerDBox'];
@@ -151,10 +158,10 @@ game = function() {
   }
 
   jump = function() {
-    if (usedJump) {
+    if (usedJump || !gameRunning) {
       return;
     }
-    // $('#jumpBox').html('<img src="assets/images/usedjump.png" />')
+    $('#jumpBox').addClass("used");
     usedJump = true;
     displayNextQuestion();
   }
