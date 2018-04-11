@@ -21,8 +21,9 @@ game = function() {
     usedJump = false;
     usedDouble = false;
     $('#questionBox').html('<img id="startButton" src="assets/images/startButton.png" />');
-    $('.answerBox').removeClass("correct");
-    $('.answerBox').text("answers go here");
+    $('.answerBox').removeClass("correct right chosen");
+    $('.answerBox').text("");
+    $('#scoreBox').text("$0");
     $('#timeBox').text(timer);
     // $('#5050Box').html('<img src="assets/images/unused5050.png" />')
     // $('#jumpBox').html('<img src="assets/images/unusedjump.png" />')
@@ -56,16 +57,22 @@ game = function() {
     let arr = ['#answerABox', '#answerBBox', '#answerCBox', '#answerDBox'];
     for (i = 0; i < arr.length; i++) {
       if ($(arr[i]).text() === q.correctAnswer()) {
-        $(arr[i]).addClass("correct");
+        if ($(arr[i]).hasClass("chosen")) {
+          $(arr[i]).removeClass("chosen");
+          $(arr[i]).addClass("correct");
+        } else {
+          $(arr[i]).addClass("right");
+        }
         arr.splice(i, 1);
         break;
       }
+      $(arr[i]).removeClass("chosen");
     }
     for (i = 0; i < arr.length; i++) {
       $(arr[i]).text("");
     }
     setTimeout(function() {
-      $('.answerBox').removeClass("correct");
+      $('.answerBox').removeClass("correct right chosen");
     }, 2000);
   }
 
@@ -116,6 +123,7 @@ game = function() {
     if (usedDouble) {
       return;
     }
+    // $('#doubleBox').html('<img src="assets/images/usedDouble.png" />')
     console.log("doubleDip");
     usedDouble = true;
     x2 = true;
@@ -125,6 +133,7 @@ game = function() {
     if (used5050) {
       return;
     }
+    // $('#5050Box').html('<img src="assets/images/used5050.png" />')
     console.log("5050");
     used5050 = true;
     let arr = ['#answerABox', '#answerBBox', '#answerCBox', '#answerDBox'];
@@ -145,6 +154,7 @@ game = function() {
     if (usedJump) {
       return;
     }
+    // $('#jumpBox').html('<img src="assets/images/usedjump.png" />')
     usedJump = true;
     displayNextQuestion();
   }
@@ -152,7 +162,11 @@ game = function() {
   setupGame();
 
   $('.answerBox').on("click", function() {
-    evaluateAnswer($(this).text());
+    $(this).addClass("chosen");
+    let response = $(this).text();
+    setTimeout(function() {
+      evaluateAnswer(response);
+    }, 1000)
   });
 
   $('#5050Box').on("click", fiftyFifty);

@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 32px;
@@ -6,15 +9,77 @@ body {
   background-color: #203;
 }
 
-div {
-  border: solid black 1px;
+#scoreBox, #timeBox {
+  padding: 50px;
 }
 
-.correct {
+.right {
   background-color: gold;
   color: black;
 }
 
+.correct {
+  background-color: #00cc99;
+  color: black;
+}
+.chosen {
+  background-color: white;
+  color: black;
+}
+
+
+
 .container {
   display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 150px;
+  grid-gap: 1rem;
+}
+
+.answerBox {
+  padding: 25px;
+  height: 85px
+}
+
+#scoreBox {
+  grid-column: 1 / 3;
+}
+
+#lifelineBox {
+  grid-column: 3 / 5;
+}
+
+#timeBox {
+  grid-column: 5 / 7;
+}
+
+#lifelineBox {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+}
+
+#questionBox {
+  grid-column: 2 / 6;
+  padding: 100px;
+  height: 275px;
+}
+
+#questionBox::after {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#answerABox {
+  grid-column: 1 / 4;
+}
+#answerBBox {
+  grid-column: 4 / 7;
+}
+#answerCBox {
+  grid-column: 1 / 4;
+}
+#answerDBox {
+  grid-column: 4 / 7;
 }
