@@ -3,9 +3,14 @@ body {
   font-size: 32px;
   text-align: center;
   color: white;
-  background-color: #102;
+  background-color: #203;
 }
 
 div {
   border: solid black 1px;
+}
+
+.correct {
+  background-color: gold;
+  color: black;
 }

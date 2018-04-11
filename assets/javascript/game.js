@@ -12,7 +12,7 @@ game = function() {
   let objTimer
 
   setupGame = function() {
-    objTimer ? clearInterval(objTimer): '';
+    objTimer ? clearInterval(objTimer) : '';
     qArray = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14];
     score = 0;
     minScore = 0;
@@ -21,6 +21,7 @@ game = function() {
     usedJump = false;
     usedDouble = false;
     $('#questionBox').html('<img id="startButton" src="assets/images/startButton.png" />');
+    $('.answerBox').removeClass("correct");
     $('.answerBox').text("answers go here");
     $('#timeBox').text(timer);
     // $('#5050Box').html('<img src="assets/images/unused5050.png" />')
@@ -31,13 +32,14 @@ game = function() {
   countTime = function() {
     timer--;
     $('#timeBox').text(timer);
-    timer === 0 ? loseGame():'';
+    timer === 0 ? loseGame() : '';
   }
 
   displayNextQuestion = function() {
-    objTimer ? clearInterval(objTimer): '';
-    $('#scoreBox').text(score);
+    objTimer ? clearInterval(objTimer) : '';
+    $('#scoreBox').text("$" + score);
     timer = 30;
+    $('#timeBox').text(timer);
     q = qArray.shift();
     console.log(q.correctAnswer());
     $('#questionBox').text(q.question);
@@ -49,17 +51,40 @@ game = function() {
 
   }
 
+  showCorrect = function() {
+    let arr = ['#answerABox', '#answerBBox', '#answerCBox', '#answerDBox'];
+    for (i = 0; i < arr.length; i++) {
+      if ($(arr[i]).text() === q.correctAnswer()) {
+        $(arr[i]).addClass("correct");
+        arr.splice(i, 1);
+        break;
+      }
+    }
+    for (i = 0; i < arr.length; i++) {
+      $(arr[i]).text("");
+    }
+    setTimeout(function() {
+      $('.answerBox').removeClass("correct");
+    }, 2000);
+  }
+
   winGame = function() {
-    alert("congratulations! you win!");
-    setupGame()
+    showCorrect();
+    $('#questionBox').html("<h1>CONGRATULATIONS!\n$1,000,000")
+    game();
   }
 
   loseGame = function() {
-    alert("you are the weakest link, good bye!");
-    setupGame()
+    showCorrect()
+    $('#questionBox').text("I'm sorry that was incorrect.")
+    if (minScore > 0) {
+      $('#questionBox').append("\nBUT you're leaving with " + minScore);
+    }
+    setTimeout(game, 2000);
   }
 
   evaluateAnswer = function(response) {
+    clearInterval(objTimer);
     if (response === q.correctAnswer()) {
       score = q.value;
       switch (q.value) {
@@ -73,7 +98,8 @@ game = function() {
           break;
         default:
       }
-      displayNextQuestion();
+      showCorrect();
+      setTimeout(displayNextQuestion, 2000);
     } else {
       if (x2) {
         x2 = false;
@@ -86,14 +112,18 @@ game = function() {
   }
 
   doubleDip = function() {
-    if (usedDouble) {return;}
+    if (usedDouble) {
+      return;
+    }
     console.log("doubleDip");
     usedDouble = true;
     x2 = true;
   }
 
   fiftyFifty = function() {
-    if (used5050) {return;}
+    if (used5050) {
+      return;
+    }
     console.log("5050");
     used5050 = true;
     let arr = ['#answerABox', '#answerBBox', '#answerCBox', '#answerDBox'];
@@ -111,7 +141,9 @@ game = function() {
   }
 
   jump = function() {
-    if (usedJump) {return;}
+    if (usedJump) {
+      return;
+    }
     usedJump = true;
     displayNextQuestion();
   }
