@@ -29,7 +29,7 @@ let q3 = {
   answer3: "Billie Piper",
   answer4: "Dido",
   correctAnswer: function() {
-    this.answer1
+    return this.answer1
   },
   value: 2000
 }
@@ -41,7 +41,7 @@ let q4 = {
   answer3: "M*A*S*H",
   answer4: "Dad's Army",
   correctAnswer: function() {
-    this.answer3
+    return this.answer3
   },
   value: 3000
 }
@@ -53,7 +53,7 @@ let q5 = {
   answer3: "Trent",
   answer4: "Tyne",
   correctAnswer: function() {
-    this.answer1
+    return this.answer1
   },
   value: 5000
 }
@@ -65,7 +65,7 @@ let q6 = {
   answer3: "Dangermouse",
   answer4: "Wacky Races",
   correctAnswer: function() {
-    this.answer4
+    return this.answer4
   },
   value: 7000
 }
@@ -77,7 +77,7 @@ let q7 = {
   answer3: "Verdi",
   answer4: "Rossini",
   correctAnswer: function() {
-    this.answer3
+    return this.answer3
   },
   value: 10000
 }
@@ -89,7 +89,7 @@ let q8 = {
   answer3: "Odysseus",
   answer4: "Theseus",
   correctAnswer: function() {
-    this.answer1
+    return this.answer1
   },
   value: 20000
 }
@@ -113,7 +113,7 @@ let q10 = {
   answer3: "Oxymoron",
   answer4: "Gallimaufry",
   correctAnswer: function() {
-    this.answer4
+    return this.answer4
   },
   value: 50000
 }
@@ -125,7 +125,7 @@ let q11 = {
   answer3: "Hitch",
   answer4: "Knot",
   correctAnswer: function() {
-    this.answer4
+    return this.answer4
   },
   value: 100000
 }
@@ -137,7 +137,7 @@ let q12 = {
   answer3: "St Gregory",
   answer4: "St Alban",
   correctAnswer: function() {
-    this.answer2
+    return this.answer2
   },
   value: 250000
 }
@@ -149,7 +149,7 @@ let q13 = {
   answer3: "Chicken",
   answer4: "Dog",
   correctAnswer: function() {
-    this.answer2
+    return this.answer2
   },
   value: 500000
 }
@@ -161,7 +161,7 @@ let q14 = {
   answer3: "Canada",
   answer4: "Iceland",
   correctAnswer: function() {
-    this.answer2
+    return this.answer2
   },
   value: 1000000
 }
