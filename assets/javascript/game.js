@@ -54,7 +54,7 @@ game = function() {
     $('#questionBox').off("click");
     $('.answerBox').off("click");
     $('#questionBox').removeClass("starting");
-    $('.lifeline').addClass("paused");
+    $('.lifeline, .answerBox').addClass("paused");
     $('#scoreBox').text("$" + score);
     $('.answerBox').text("");
     timer = 30;
@@ -80,15 +80,15 @@ game = function() {
     }, 4000);
     setTimeout(function() {
       startTime()
+      $('.lifeline, .answerBox').removeClass("paused");
+      $('.answerBox').on("click", function() {
+        $(this).addClass("chosen");
+        let response = $(this).text();
+        setTimeout(function() {
+          evaluateAnswer(response);
+        }, 1000)
+      });
     }, 4000);
-    setTimeout(function() {$('.lifeline').removeClass("paused");}, 4000)
-    $('.answerBox').on("click", function() {
-      $(this).addClass("chosen");
-      let response = $(this).text();
-      setTimeout(function() {
-        evaluateAnswer(response);
-      }, 1000)
-    });
   }
 
   showCorrect = function() {
@@ -107,6 +107,7 @@ game = function() {
       $(arr[i]).removeClass("chosen");
     }
     for (i = 0; i < arr.length; i++) {
+      $(arr[i]).removeClass("active");
       $(arr[i]).text("");
     }
     setTimeout(function() {
@@ -145,6 +146,7 @@ game = function() {
         default:
       }
       showCorrect();
+      x2 ? x2 = false : '';
       setTimeout(displayNextQuestion, 2000);
     } else {
       if (x2) {
