@@ -13,7 +13,7 @@ game = function() {
   let gameRunning = false;
 
   setupGame = function() {
-    objTimer ? clearInterval(objTimer) : '';
+    stopTime();
     gameRunning = false;
     qArray = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14];
     score = 0;
@@ -35,28 +35,42 @@ game = function() {
     $('#questionBox').on("click", displayNextQuestion);
   }
 
-  countTime = function() {
+  startTime = function() {
     timer--;
     $('#timeBox').text(timer);
     timer === 0 ? loseGame() : '';
   }
+  stopTime = function() {
+    clearInterval(objTimer);
+  }
 
   displayNextQuestion = function() {
     !gameRunning ? gameRunning = true : '';
-    objTimer ? clearInterval(objTimer) : '';
+    stopTime();
     $('#questionBox').off("click");
     $('#questionBox').removeClass("starting");
     $('#scoreBox').text("$" + score);
+    $('.answerBox').text("");
     timer = 30;
     $('#timeBox').text(timer);
     q = qArray.shift();
     console.log(q.correctAnswer());
     $('#questionBox').text(q.question);
-    setTimeout(function() {$('#answerABox').text(q.answer1)}, 1000);
-    setTimeout(function() {$('#answerBBox').text(q.answer2)}, 2000);
-    setTimeout(function() {$('#answerCBox').text(q.answer3)}, 3000);
-    setTimeout(function() {$('#answerDBox').text(q.answer4)}, 4000);
-    objTimer = setTimeout(function() {setInterval(countTime, 1000)}, 4000);
+    setTimeout(function() {
+      $('#answerABox').text(q.answer1)
+    }, 1000);
+    setTimeout(function() {
+      $('#answerBBox').text(q.answer2)
+    }, 2000);
+    setTimeout(function() {
+      $('#answerCBox').text(q.answer3)
+    }, 3000);
+    setTimeout(function() {
+      $('#answerDBox').text(q.answer4)
+    }, 4000);
+    setTimeout(function() {
+      objTimer = setInterval(startTime, 1000)
+    }, 4000);
 
   }
 
@@ -99,7 +113,7 @@ game = function() {
   }
 
   evaluateAnswer = function(response) {
-    clearInterval(objTimer);
+    stopTime();
     if (response === q.correctAnswer()) {
       score = q.value;
       switch (q.value) {
@@ -118,11 +132,14 @@ game = function() {
     } else {
       if (x2) {
         x2 = false;
+        setInterval(startTime, 1000)
         return;
       }
       loseGame();
       return;
     }
+    $('#5050Box').hasClass("paused") ? $('#5050Box').removeClass("paused") : '';
+    $('#jumpBox').removeClass("paused") ? $('#jumpBox').removeClass("paused") : '';
 
   }
 
@@ -132,12 +149,15 @@ game = function() {
     }
     $('#doubleBox').addClass("used");
     console.log("doubleDip");
+    stopTime();
+    !$('#5050Box').hasClass("used") ? $('#5050Box').addClass("paused") : '';
+    !$('#jumpBox').hasClass("used") ? $('#jumpBox').addClass("paused") : '';
     usedDouble = true;
     x2 = true;
   }
 
   fiftyFifty = function() {
-    if (used5050 || !gameRunning) {
+    if (used5050 || !gameRunning || $('#5050Box').hasClass("paused")) {
       return;
     }
     $('#5050Box').addClass("used");
@@ -158,7 +178,7 @@ game = function() {
   }
 
   jump = function() {
-    if (usedJump || !gameRunning) {
+    if (usedJump || !gameRunning || $('#jumpBox').hasClass("paused")) {
       return;
     }
     $('#jumpBox').addClass("used");

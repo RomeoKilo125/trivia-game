@@ -33,7 +33,7 @@ h1 {
   color: black;
 }
 
-.used {
+.used, .paused {
   opacity: .25;
 }
 
@@ -54,9 +54,12 @@ h1 {
 }
 
 .lifeline {
+  vertical-align: middle;
+}
+
+.circle {
   border: solid 5px white;
   border-radius: 50%;
-  vertical-align: middle;
 }
 
 .answerBox {
