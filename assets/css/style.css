@@ -14,3 +14,7 @@ div {
   background-color: gold;
   color: black;
 }
+
+.container {
+  display: grid;
+}

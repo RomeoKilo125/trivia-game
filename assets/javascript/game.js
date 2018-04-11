@@ -27,6 +27,7 @@ game = function() {
     // $('#5050Box').html('<img src="assets/images/unused5050.png" />')
     // $('#jumpBox').html('<img src="assets/images/unusedjump.png" />')
     // $('#doubleBox').html('<img src="assets/images/unusedDouble.png" />')
+    $('#startButton').on("click", displayNextQuestion);
   }
 
   countTime = function() {
@@ -149,8 +150,6 @@ game = function() {
   }
 
   setupGame();
-
-  $('#startButton').on("click", displayNextQuestion);
 
   $('.answerBox').on("click", function() {
     evaluateAnswer($(this).text());
