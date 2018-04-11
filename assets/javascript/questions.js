@@ -47,7 +47,7 @@ let q4 = {
 }
 
 let q5 = {
-  question: "Which is the longest riber in the UK?",
+  question: "Which is the longest river in the UK?",
   answer1: "Severn",
   answer2: "Thames",
   answer3: "Trent",

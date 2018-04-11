@@ -71,7 +71,7 @@ game = function() {
   winGame = function() {
     showCorrect();
     $('#questionBox').html("<h1>CONGRATULATIONS!\n$1,000,000")
-    game();
+    setupGame();
   }
 
   loseGame = function() {
@@ -80,7 +80,7 @@ game = function() {
     if (minScore > 0) {
       $('#questionBox').append("\nBUT you're leaving with " + minScore);
     }
-    setTimeout(game, 2000);
+    setTimeout(setupGame, 2000);
   }
 
   evaluateAnswer = function(response) {
@@ -159,7 +159,6 @@ game = function() {
   $('#5050Box').on("click", fiftyFifty);
   $('#jumpBox').on("click", jump);
   $('#doubleBox').on("click", doubleDip);
-
 }
 
 game()
