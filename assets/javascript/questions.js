@@ -23,7 +23,7 @@ let q2 = {
 }
 
 let q3 = {
-  question: "Which singer had a 1998 UK hit iwth 'Ray Of Light'?",
+  question: "Which singer had a 1998 UK hit with 'Ray Of Light'?",
   answer1: "Madonna",
   answer2: "Cher",
   answer3: "Billie Piper",
