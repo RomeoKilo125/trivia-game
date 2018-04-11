@@ -4,7 +4,9 @@ let q1 = {
   answer2: "2",
   answer3: "3",
   answer4: "4",
-  correctAnswer: this.answer2,
+  correctAnswer: function() {
+    return this.answer2
+  },
   value: 500
 }
 
@@ -14,7 +16,9 @@ let q2 = {
   answer2: "Duck",
   answer3: "Veal",
   answer4: "Pork",
-  correctAnswer: this.answer2,
+  correctAnswer: function() {
+    return this.answer2
+  },
   value: 1000
 }
 
@@ -24,7 +28,9 @@ let q3 = {
   answer2: "Cher",
   answer3: "Billie Piper",
   answer4: "Dido",
-  correctAnswer: this.answer1,
+  correctAnswer: function() {
+    this.answer1
+  },
   value: 2000
 }
 
@@ -34,7 +40,9 @@ let q4 = {
   answer2: "Get Some In",
   answer3: "M*A*S*H",
   answer4: "Dad's Army",
-  correctAnswer: this.answer3,
+  correctAnswer: function() {
+    this.answer3
+  },
   value: 3000
 }
 
@@ -44,7 +52,9 @@ let q5 = {
   answer2: "Thames",
   answer3: "Trent",
   answer4: "Tyne",
-  correctAnswer: this.answer1,
+  correctAnswer: function() {
+    this.answer1
+  },
   value: 5000
 }
 
@@ -54,7 +64,9 @@ let q6 = {
   answer2: "The Jetsons",
   answer3: "Dangermouse",
   answer4: "Wacky Races",
-  correctAnswer: this.answer4,
+  correctAnswer: function() {
+    this.answer4
+  },
   value: 7000
 }
 
@@ -64,7 +76,9 @@ let q7 = {
   answer2: "Puccini",
   answer3: "Verdi",
   answer4: "Rossini",
-  correctAnswer: this.answer3,
+  correctAnswer: function() {
+    this.answer3
+  },
   value: 10000
 }
 
@@ -74,7 +88,9 @@ let q8 = {
   answer2: "Achilles",
   answer3: "Odysseus",
   answer4: "Theseus",
-  correctAnswer: this.answer1,
+  correctAnswer: function() {
+    this.answer1
+  },
   value: 20000
 }
 
@@ -84,7 +100,9 @@ let q9 = {
   answer2: "Almond",
   answer3: "Walnut",
   answer4: "Chestnut",
-  correctAnswer: this.answer2,
+  correctAnswer: function() {
+    return this.answer2
+  },
   value: 30000
 }
 
@@ -94,9 +112,10 @@ let q10 = {
   answer2: "Rigadoon",
   answer3: "Oxymoron",
   answer4: "Gallimaufry",
-  correctAnswer: this.answer4,
-  value: 50000;
-
+  correctAnswer: function() {
+    this.answer4
+  },
+  value: 50000
 }
 
 let q11 = {
@@ -105,8 +124,10 @@ let q11 = {
   answer2: "Clove",
   answer3: "Hitch",
   answer4: "Knot",
-  correctAnswer: this.answer4,
-  value: 100000;
+  correctAnswer: function() {
+    this.answer4
+  },
+  value: 100000
 }
 
 let q12 = {
@@ -115,8 +136,10 @@ let q12 = {
   answer2: "St Bernard",
   answer3: "St Gregory",
   answer4: "St Alban",
-  correctAnswer: this.answer2,
-  value: 250000;
+  correctAnswer: function() {
+    this.answer2
+  },
+  value: 250000
 }
 
 let q13 = {
@@ -125,8 +148,10 @@ let q13 = {
   answer2: "Bee",
   answer3: "Chicken",
   answer4: "Dog",
-  correctAnswer: this.answer2,
-  value: 500000;
+  correctAnswer: function() {
+    this.answer2
+  },
+  value: 500000
 }
 
 let q14 = {
@@ -135,6 +160,8 @@ let q14 = {
   answer2: "Peru",
   answer3: "Canada",
   answer4: "Iceland",
-  correctAnswer: this.answer2,
-  value: 1000000;
+  correctAnswer: function() {
+    this.answer2
+  },
+  value: 1000000
 }
