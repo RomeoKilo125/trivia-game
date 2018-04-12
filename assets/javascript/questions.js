@@ -251,5 +251,71 @@ q23 = {
     return this.answer2
   },
   value: null
+},
+q24 = {
+  question: 'For ordering his favorite beverages on demand, LBJ had four buttons installed in the Oval Office labeled "coffee," "tea," "Coke," and what?',
+  answer1: "Fresca",
+  answer2: "V8",
+  answer3: "Yoo-hoo",
+  answer4: "A&W",
+  correctAnswer: function() {
+    return this.answer1
+  },
+  value: null
+},
+q25 = {
+  question: 'Khrushchev\'s famous 1960 "shoe-banging" outburst at the U.N. was in response to a delegate from what nation?',
+  answer1: "Australia",
+  answer2: "The Netherlands",
+  answer3: "The Philippines",
+  answer4: "Turkey",
+  correctAnswer: function() {
+    return this.answer3
+  },
+  value: null
+},
+q26 = {
+  question: 'The most-watched TV episode of all time, the final episode of M*A*S*H aired at 8:30 p.m. on February 28, 1983, following what sitcom?',
+  answer1: "Private Benjamin",
+  answer2: "Square Pegs",
+  answer3: "Alice",
+  answer4: "Newhart",
+  correctAnswer: function() {
+    return this.answer3
+  },
+  value: null
+},
+q27 = {
+  question: 'Which of the following landlocked countries is entirely contained within another country?',
+  answer1: "Lesotho",
+  answer2: "Burkina Faso",
+  answer3: "Mongolia",
+  answer4: "Luxembourg",
+  correctAnswer: function() {
+    return this.answer1
+  },
+  value: null
+},
+q28 = {
+  question: 'Who did artist Grant Wood use as the model for the farmer in his classic painting "American Gothic"?',
+  answer1: "Traveling Salesman",
+  answer2: "Local sheriff",
+  answer3: "His dentist",
+  answer4: "His butcher",
+  correctAnswer: function() {
+    return this.answer3
+  },
+  value: null
+},
+q29 = {
+  question: 'Which of these U.S. presidents appeared on the television series Laugh-In?',
+  answer1: "Lyndon Johnson",
+  answer2: "Richard Nixon",
+  answer3: "Jimmy Carter",
+  answer4: "Gerald Ford",
+  correctAnswer: function() {
+    return this.answer2
+  },
+  value: null
 }
 ];
