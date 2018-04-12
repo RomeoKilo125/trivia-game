@@ -42,7 +42,7 @@ h1 {
   grid-template-columns: repeat(4, 225px);
   grid-template-rows: 150px;
   grid-gap: 1rem;
-  grid-row-gap: 5rem;
+  grid-row-gap: 3rem;
   margin: 0 auto;
   width: 1020px;
 }

@@ -1,5 +1,6 @@
 game = function() {
 
+  let money = [500, 1000, 2000, 3000, 5000, 7000, 10000, 20000, 30000, 50000, 75000, 100000, 250000, 500000, 1000000]
   let qArray = [];
   let score = 0;
   let minScore = 0;
@@ -15,7 +16,7 @@ game = function() {
   setupGame = function() {
     stopTime();
     gameRunning = false;
-    qArray = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14];
+    qArray = pool;
     score = 0;
     minScore = 0;
     timer = 30;
@@ -59,7 +60,10 @@ game = function() {
     $('.answerBox').text("");
     timer = 30;
     $('#timeBox').text(timer);
-    q = qArray.shift();
+    let qIndex = Math.floor(Math.random() * qArray.length);
+    q = qArray[qIndex];
+    qArray.splice(qIndex, 1);
+    q.value = money.shift();
     console.log(q.correctAnswer());
     $('#questionBox').text(q.question);
     setTimeout(function() {
