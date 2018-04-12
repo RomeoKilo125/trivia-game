@@ -93,7 +93,7 @@ game = function() {
 
   showCorrect = function() {
     let arr = ['#answerABox', '#answerBBox', '#answerCBox', '#answerDBox'];
-    for (i = 0; i < arr.length; i++) {
+    for (i = arr.length - 1; i >= 0; i--) {
       if ($(arr[i]).text() === q.correctAnswer()) {
         if ($(arr[i]).hasClass("chosen")) {
           $(arr[i]).removeClass("chosen");
@@ -102,7 +102,6 @@ game = function() {
           $(arr[i]).addClass("right");
         }
         arr.splice(i, 1);
-        break;
       }
       $(arr[i]).removeClass("chosen");
     }
