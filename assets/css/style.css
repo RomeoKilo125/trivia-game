@@ -26,25 +26,6 @@ h1 {
   font-size: 72px;
 }
 
-.starting {
-  background-color: #7777cc;
-}
-
-.right {
-  background-color: gold;
-  color: black;
-}
-
-.correct {
-  background-color: #00cc99;
-  color: black;
-}
-
-.chosen {
-  background-color: white;
-  color: black;
-}
-
 .used, .paused {
   opacity: .50;
 }
@@ -124,4 +105,23 @@ h1 {
 
 #answerDBox {
   grid-column: 3 / 5;
+}
+
+.starting {
+  background-color: #7777cc;
+}
+
+.right {
+  background-color: gold;
+  color: black;
+}
+
+.correct {
+  background-color: #00cc99;
+  color: black;
+}
+
+.chosen {
+  background-color: white;
+  color: black;
 }

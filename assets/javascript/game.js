@@ -26,6 +26,7 @@ game = function() {
     $('#questionBox').html('<h1>Start</h1>');
     $('#questionBox').addClass("starting");
     $('.answerBox').removeClass("correct right chosen active");
+    $('.lifeline').removeClass("used paused");
     $('.answerBox').text("");
     $('#scoreBox').text("$0");
     $('#timeBox').text(timer);
