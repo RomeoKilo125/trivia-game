@@ -85,6 +85,7 @@ game = function() {
     setTimeout(function() {
       startTime()
       $('.lifeline, .answerBox').removeClass("paused");
+      $('.lifeline, .answerBox').addClass("active");
       $('.answerBox').on("click", function() {
         $(this).addClass("chosen");
         let response = $(this).text();

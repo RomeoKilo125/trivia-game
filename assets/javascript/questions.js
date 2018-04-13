@@ -176,7 +176,7 @@ q16 = {
   value: null
 },
 q17 = {
-  question: "Who delivered the less famous two-hour speech that preceded Abrahamn Lincoln's two-minute Gettysburg Address?",
+  question: "Who delivered the less famous two-hour speech that preceded Abraham Lincoln's two-minute Gettysburg Address?",
   answer1: "Wendell Phillips",
   answer2: "Daniel Webster",
   answer3: "Robert G. Ingersoll",
