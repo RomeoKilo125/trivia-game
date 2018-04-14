@@ -62,7 +62,7 @@ game = function() {
     timer = 30;
     $('#timeBox').text(timer);
     let qIndex = Math.floor(Math.random() * qArray.length);
-    q = qArray[qIndex];
+    // q = qArray[qIndex];
     qArray.splice(qIndex, 1);
     q.value = money.shift();
     console.log(q.correctAnswer());

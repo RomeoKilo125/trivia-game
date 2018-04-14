@@ -186,17 +186,17 @@ q17 = {
   },
   value: null
 },
-q18 = {
-  question: '"Nephelococcygia" is the practice of doing what?',
-  answer1: "Finding shapes in clouds",
-  answer2: "Sleeping with your eyes open",
-  answer3: "Breaking glass with your voice",
-  answer4: "Swimming in freezing water",
-  correctAnswer: function() {
-    return this.answer1
-  },
-  value: null
-},
+// q18 = {
+//   question: '"Nephelococcygia" is the practice of doing what?',
+//   answer1: "Finding shapes in clouds",
+//   answer2: "Sleeping with your eyes open",
+//   answer3: "Breaking glass with your voice",
+//   answer4: "Swimming in freezing water",
+//   correctAnswer: function() {
+//     return this.answer1
+//   },
+//   value: null
+// },
 q19 = {
   question: 'Which insect shorted out an early supercomputer and inspired the term "computer bug"?',
   answer1: "Moth",
