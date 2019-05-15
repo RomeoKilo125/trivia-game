@@ -154,7 +154,7 @@ q14 = {
   value: null
 },
 q15 = {
-  question: "In true American style, he house where Thomas Jefferson wrote the Declaration of Independence became what?",
+  question: "In true American style, the house where Thomas Jefferson wrote the Declaration of Independence became what?",
   answer1: "Hamburger Stand",
   answer2: "Car Wash",
   answer3: "Starbucks",
