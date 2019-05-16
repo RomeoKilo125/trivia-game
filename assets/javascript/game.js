@@ -207,6 +207,9 @@ game = function() {
     }
     $('#jumpBox').addClass("used");
     usedJump = true;
+    console.log(money)
+    money.unshift(q.value)
+    console.log(money)
     displayNextQuestion();
   }
 
