@@ -1,6 +1,6 @@
 game = function() {
 
-  let money = [500, 1000, 2000, 3000, 5000, 7000, 10000, 20000, 30000, 50000, 75000, 100000, 250000, 500000, 1000000]
+  let money = []
   let qArray = [];
   let score = 0;
   let minScore = 0;
@@ -53,6 +53,7 @@ game = function() {
   displayNextQuestion = function() {
     !gameRunning ? gameRunning = true : '';
     stopTime();
+    console.log(money)
     $('#questionBox').off("click");
     $('.answerBox').off("click");
     $('#questionBox').removeClass("starting");
@@ -207,9 +208,7 @@ game = function() {
     }
     $('#jumpBox').addClass("used");
     usedJump = true;
-    console.log(money)
     money.unshift(q.value)
-    console.log(money)
     displayNextQuestion();
   }
 
